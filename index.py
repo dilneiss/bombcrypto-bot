@@ -506,7 +506,7 @@ def main():
         now = time.time()
 
         #  Aqui controla a página aberta
-        if now - last_change_page > addRandomness(t['change_page'] * 60):
+        if t['change_page'] > 0 and now - last_change_page > addRandomness(t['change_page'] * 60):
 
             last_change_page = now
             pyautogui.keyDown('alt')
