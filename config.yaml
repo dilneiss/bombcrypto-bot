@@ -68,7 +68,7 @@
     #
     # [pt_BR]
     # Valor padrão: 0.8
-    commom: 0.8
+    commom: 0.7
 
     # [en_US]
     # Default value: 0.8
@@ -103,14 +103,14 @@
     #
     # [pt_BR]
     # Valor padrão: 0.9
-    go_to_work_btn: 0.9
+    go_to_work_btn: 0.8
 
     # [en_US]
     # Default value: 0.9
     #
     # [pt_BR]
     # Valor padrão: 0.9
-    green_bar: 0.9
+    green_bar: 0.8
 
   home:
     enable: False
