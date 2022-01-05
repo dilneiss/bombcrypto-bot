@@ -197,18 +197,13 @@ def positions(target, threshold=ct['default'],img = None):
     return rectangles
 
 def scroll():
+    dividers = positions(images['divider'], threshold = ct['divider'])
 
-    commoms = positions(images['commom-text'], threshold = ct['commom'])
-    if (len(commoms) == 0):
-        commoms = positions(images['rare-text'], threshold = ct['rare'])
-        if (len(commoms) == 0):
-            commoms = positions(images['super_rare-text'], threshold = ct['super_rare'])
-            if (len(commoms) == 0):
-                commoms = positions(images['epic-text'], threshold = ct['epic'])
-                if (len(commoms) == 0):
-                    return
-    x,y,w,h = commoms[len(commoms)-1]
-#
+    if (len(dividers) == 0):
+        return
+
+    x,y,w,h = dividers[len(dividers)-1]
+
     moveToWithRandomness(x,y,1)
 
     if not c['use_click_and_drag_instead_of_scroll']:
@@ -363,7 +358,7 @@ def login():
     if not clickBtn(images['select-wallet-1-no-hover'], ):
         if clickBtn(images['select-wallet-1-hover'], threshold = ct['select_wallet_buttons'] ):
             pass
-            # o ideal era que ele alternasse entre checar cada um dos 2 por um tempo 
+            # o ideal era que ele alternasse entre checar cada um dos 2 por um tempo
             # print('sleep in case there is no metamask text removed')
             # time.sleep(20)
     else:
@@ -483,74 +478,38 @@ def main():
     t = c['time_intervals']
 
     last = {
-        1: {
-             "login" : 0,
-             "heroes" : 0,
-             "new_map" : 0,
-             "check_for_captcha" : 0,
-             "refresh_heroes" : 0
-         },
-        2: {
-             "login" : 0,
-             "heroes" : 0,
-             "new_map" : 0,
-             "check_for_captcha" : 0,
-             "refresh_heroes" : 0
-         },
+    "login" : 0,
+    "heroes" : 0,
+    "new_map" : 0,
+    "check_for_captcha" : 0,
+    "refresh_heroes" : 0
     }
     # =========
 
-    global page
-    global totalPage
-    page = 1
-    totalPage = 2
-
-    global last_change_page
-    last_change_page = 0
     while True:
         now = time.time()
 
-        #  Aqui controla a página aberta
-        if now - last_change_page > addRandomness(t['change_page'] * 60):
+        if now - last["check_for_captcha"] > addRandomness(t['check_for_captcha'] * 60):
+            last["check_for_captcha"] = now
 
-            last_change_page = now
-            pyautogui.keyDown('alt')
-            time.sleep(.2)
-
-            if (page == 1):
-                page = 2
-                pyautogui.press('tab')
-                time.sleep(.2)
-
-            else:
-                page = 1
-                pyautogui.press('tab')
-                time.sleep(.2)
-      
-            
-            pyautogui.keyUp('alt')
-
-        if now - last[page]["check_for_captcha"] > addRandomness(t['check_for_captcha'] * 60):
-            last[page]["check_for_captcha"] = now
-
-        if now - last[page]["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
-            last[page]["heroes"] = now
+        if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
+            last["heroes"] = now
             refreshHeroes()
 
-        if now - last[page]["login"] > addRandomness(t['check_for_login'] * 60):
+        if now - last["login"] > addRandomness(t['check_for_login'] * 60):
             sys.stdout.flush()
-            last[page]["login"] = now
+            last["login"] = now
             login()
 
-        if now - last[page]["new_map"] > t['check_for_new_map_button']:
-            last[page]["new_map"] = now
+        if now - last["new_map"] > t['check_for_new_map_button']:
+            last["new_map"] = now
 
             if clickBtn(images['new-map']):
                 loggerMapClicked()
 
 
-        if now - last[page]["refresh_heroes"] > addRandomness( t['refresh_heroes_positions'] * 60):
-            last[page]["refresh_heroes"] = now
+        if now - last["refresh_heroes"] > addRandomness( t['refresh_heroes_positions'] * 60):
+            last["refresh_heroes"] = now
             refreshHeroesPositions()
 
         #clickBtn(teasureHunt)
@@ -574,5 +533,4 @@ if __name__ == '__main__':
 
 # colocar o botao em pt
 # soh resetar posiçoes se n tiver clickado em newmap em x segundos
-
 

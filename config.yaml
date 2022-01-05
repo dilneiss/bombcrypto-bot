@@ -75,6 +75,13 @@
     #
     # [pt_BR]
     # Valor padrão: 0.8
+    divider: 0.8
+
+    # [en_US]
+    # Default value: 0.8
+    #
+    # [pt_BR]
+    # Valor padrão: 0.8
     rare: 0.8
 
     # [en_US]
