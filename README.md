@@ -10,6 +10,9 @@
 ### Smart Chain Wallet(BUSD/BNB/BCOIN):
 #### 0xbd06182D8360FB7AC1B05e871e56c76372510dDf
 
+### Smart Chain Wallet(BUSD/BNB/BCOIN) - Dilnei / Nova Interface 05/01/2022 (Multi Janelas Infinitas + Clique no botão ALL):
+0x93cBDa15dD2fEa41bdDe5a17BeC2fd6a73E8E52e
+
 ### PIX:
   6ce2b79e-97be-4881-a882-81902e29d7ce
 ![pix](https://github.com/mpcabete/bombcrypto-bot/raw/main/readme-images/pix.jpeg)
