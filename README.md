@@ -78,6 +78,9 @@ pip install -r requirements.txt
   
 ![pip](https://github.com/mpcabete/bombcrypto-bot/raw/main/readme-images/pip.png)
 
+### Abra o game pelo link:
+https://app.bombcrypto.io/webgl/index.html
+
 ### Pronto! Agora é só iniciar o bot com o comando
 
 ```
