@@ -23,4 +23,7 @@ __pycache__/
 
 # vscode plugins
 /.history
+
+database/
+config.yaml
 /.idea
