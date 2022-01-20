@@ -69,6 +69,7 @@ Digite o comando "cd" + caminho que você copiou:
 ### Instale as dependências:
 
 ```
+pip3 install torch torchvision torchaudio (caso não funcionar, gerar o comando aqui: https://pytorch.org/get-started/locally/)
 pip install -r requirements.txt
 ```
 
